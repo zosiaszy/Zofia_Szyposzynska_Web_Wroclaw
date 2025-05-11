@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Podsumowanie zamówienia</title>
+    <link rel="stylesheet" href="/styles/bootstrap.min.css" />
+    <style>
+      body {
+        background-color: #f8f9fa;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        box-sizing: border-box;
+      }
+      .container {
+        max-width: 600px;
+        width: 100%;
+        margin-top: 20px;
+      }
+      h1 {
+        text-align: center;
+        margin-bottom: 30px;
+      }
+      .card {
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        border: none;
+      }
+      .card-header {
+        background-color: #007bff;
+        color: white;
+        font-size: 1.5rem;
+        padding: 15px;
+      }
+      .card-body {
+        padding: 20px;
+      }
+      .item {
+        margin-bottom: 20px;
+      }
+      .item-info {
+        display: flex;
+        justify-content: space-between;
+        font-weight: bold;
+        margin-bottom: 5px;
+      }
+      .item-details {
+        font-size: 0.9rem;
+        color: #555;
+      }
+      .total-price {
+        font-size: 1.25rem;
+        font-weight: bold;
+        margin-top: 20px;
+      }
+      .order-button {
+        padding: 10px;
+        background-color: #007bff;
+        color: white;
+        cursor: pointer;
+        border-radius: 5px;
+        border-color: #f8f9fa;
+        width: 100%;
+        margin-top: 20px;
+      }
+      .go-back {
+        text-align: center;
+        padding: 5px;
+        margin-top: 20px;
+        display: inline-flex;
+      }
+
+      a {
+        color: #007bff;
+      }
+      h2 {
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="card">
+        <div class="card-header text-center">
+          <h2>Podsumowanie zamówienia</h2>
+        </div>
+        <div class="card-body">
+          <h3>Szczegóły zamówienia:</h3>
+          <div id="cart"></div>
+
+          <div class="go-back">
+            <a href="/cart" class="btn btn-outline-secondary back-cart"
+              >Wróć do koszyka</a
+            >
+          </div>
+          <button id="orderButton" class="order-button">Złóż zamówienie</button>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const cart = JSON.parse(localStorage.getItem('order') || '[]');
+      const totalPrice = localStorage.getItem('orderTotal') || '0';
+      const cartContainer = document.getElementById('cart');
+
+      if (!Array.isArray(cart) || cart.length === 0) {
+        cartContainer.innerHTML =
+          "<p class='text-center'>Koszyk jest pusty.</p>";
+      } else {
+        cart.forEach((item) => {
+          const name = item.product?.name || 'Nieznany produkt';
+          const quantity = item.quantity || 0;
+          const main = item.product?.price?.main || 0;
+          const fractional = item.product?.price?.fractional || 0;
+          const price = (main + fractional / 100) * quantity;
+
+          const div = document.createElement('div');
+          div.className = 'item';
+
+          const itemInfo = document.createElement('div');
+          itemInfo.className = 'item-info';
+          itemInfo.innerHTML = `${name}`;
+
+          const itemDetails = document.createElement('div');
+          itemDetails.className = 'item-details';
+          itemDetails.innerHTML = `Ilość: ${quantity} szt. <br/> Cena: ${(main + fractional / 100).toFixed(2)} zł/szt. <br/> Razem: ${price.toFixed(2)} zł`;
+
+          div.appendChild(itemInfo);
+          div.appendChild(itemDetails);
+
+          cartContainer.appendChild(div);
+        });
+
+        const total = document.createElement('div');
+        total.className = 'total-price text-right';
+        total.textContent = `Łączna cena: ${totalPrice} zł`;
+        cartContainer.appendChild(total);
+      }
+
+      document.getElementById('orderButton').addEventListener('click', () => {
+        window.location.href = '/order-confirmation.html';
+      });
+    </script>
+  </body>
+</html>
