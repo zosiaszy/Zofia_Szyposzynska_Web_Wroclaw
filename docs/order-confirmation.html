@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Potwierdzenie zamówienia</title>
+    <link rel="stylesheet" href="/styles/bootstrap.min.css" />
+    <style>
+      body {
+        background-color: #f8f9fa;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+      }
+      .container {
+        max-width: 600px;
+        width: 100%;
+        margin-top: 20px;
+      }
+      .card {
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        border: none;
+      }
+      .card-header {
+        background-color: #28a745;
+        color: white;
+        font-size: 1.5rem;
+        padding: 15px;
+      }
+      .card-body {
+        padding: 25px;
+      }
+      .list-group-item {
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        margin-bottom: 10px;
+        background-color: #fff;
+        padding: 10px;
+      }
+      .total-price {
+        font-size: 1.25rem;
+        font-weight: bold;
+        margin-top: 20px;
+      }
+      .btn-primary {
+        background-color: #007bff;
+        border-color: #007bff;
+        padding: 12px 24px;
+        font-size: 1.1rem;
+        width: 100%;
+      }
+      .btn-primary:hover {
+        background-color: #0056b3;
+        border-color: #004085;
+      }
+      .order-item {
+        margin-bottom: 15px;
+      }
+      .order-item span {
+        display: block;
+        font-weight: bold;
+        font-size: 1.1rem;
+      }
+      .order-item small {
+        display: block;
+        color: #6c757d;
+        font-size: 0.9rem;
+      }
+      .order-item .price {
+        font-weight: bold;
+        color: #28a745;
+      }
+      a {
+        color: #28a745;
+      }
+      .new-order {
+        margin-top: 20px;
+        display: inline-flex;
+      }
+      h2 {
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="card shadow">
+        <div class="card-header text-center">
+          <h2>Zamówienie złożone pomyślnie!</h2>
+        </div>
+        <div class="card-body">
+          <h3>Szczegóły zamówienia:</h3>
+          <div id="orderItems" class="mb-3"></div>
+          <div class="d-flex justify-content-between fw-bold mb-3 total-price">
+            <span>Łącznie:</span>
+            <span id="totalAmount">0.00 zł</span>
+          </div>
+          <div>
+            <a href="/" class="new-order">Nowe zamówienie</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const order = JSON.parse(localStorage.getItem('order') || '[]');
+        const total = localStorage.getItem('orderTotal') || '0.00';
+
+        const orderItemsContainer = document.getElementById('orderItems');
+        const totalElem = document.getElementById('totalAmount');
+
+        if (order.length === 0) {
+          orderItemsContainer.innerHTML = '<p>Brak danych o zamówieniu.</p>';
+        } else {
+          order.forEach(({ product, quantity }) => {
+            const price = product.price.main + product.price.fractional / 100;
+            const itemDiv = document.createElement('div');
+            itemDiv.classList.add('order-item');
+
+            itemDiv.innerHTML = `
+            <span>${product.name}</span>
+            <small>${quantity} × ${price.toFixed(2)} zł</small>
+            <span class="price">${(price * quantity).toFixed(2)} zł</span>
+          `;
+            orderItemsContainer.appendChild(itemDiv);
+          });
+        }
+
+        totalElem.textContent = `${parseFloat(total).toFixed(2)} zł`;
+
+        localStorage.removeItem('order');
+        localStorage.removeItem('orderTotal');
+      });
+    </script>
+  </body>
+</html>
