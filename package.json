@@ -1,5 +1,6 @@
 {
   "name": "online-store",
+  "homepage": "https://zosiaszy.github.io/online-store/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -50,5 +51,5 @@
   "devDependencies": {
     "@types/react-router-dom": "^5.3.3"
   },
-  "homepage": "https://zosiaszy.github.io/online-store"
+ 
 }
