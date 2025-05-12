@@ -86,7 +86,7 @@ const Cart = () => {
                     onClick={() => {
                       localStorage.setItem('order', JSON.stringify(cart));
                       localStorage.setItem('orderTotal', totalPrice);
-                      window.location.href = '/order-summary.html';
+                      window.location.href = 'order-summary.html';
                     }}
                   >
                     Przejdź do podsumowania
