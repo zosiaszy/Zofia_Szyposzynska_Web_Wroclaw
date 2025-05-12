@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/Zofia_Szyposzynska_Web_Wroclaw/static/css/main.d42aaca0.css",
-    "main.js": "/Zofia_Szyposzynska_Web_Wroclaw/static/js/main.2613fac0.js",
+    "main.js": "/Zofia_Szyposzynska_Web_Wroclaw/static/js/main.b33aaf08.js",
     "index.html": "/Zofia_Szyposzynska_Web_Wroclaw/index.html",
     "main.d42aaca0.css.map": "/Zofia_Szyposzynska_Web_Wroclaw/static/css/main.d42aaca0.css.map",
-    "main.2613fac0.js.map": "/Zofia_Szyposzynska_Web_Wroclaw/static/js/main.2613fac0.js.map"
+    "main.b33aaf08.js.map": "/Zofia_Szyposzynska_Web_Wroclaw/static/js/main.b33aaf08.js.map"
   },
   "entrypoints": [
     "static/css/main.d42aaca0.css",
-    "static/js/main.2613fac0.js"
+    "static/js/main.b33aaf08.js"
   ]
 }
