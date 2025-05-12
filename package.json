@@ -1,7 +1,7 @@
 {
   "name": "online-store",
-  "homepage": "https://zosiaszy.github.io/Zofia_Szyposzynska_Web_Wroclaw/",
   "version": "0.1.0",
+  "homepage": "https://zosiaszy.github.io/Zofia_Szyposzynska_Web_Wroclaw",  
   "private": true,
   "dependencies": {
     "@testing-library/dom": "^10.4.0",
