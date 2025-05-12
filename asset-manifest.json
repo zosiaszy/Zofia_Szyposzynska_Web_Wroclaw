@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.css": "/online-store/static/css/main.d42aaca0.css",
-    "main.js": "/online-store/static/js/main.2613fac0.js",
-    "index.html": "/online-store/index.html",
-    "main.d42aaca0.css.map": "/online-store/static/css/main.d42aaca0.css.map",
-    "main.2613fac0.js.map": "/online-store/static/js/main.2613fac0.js.map"
+    "main.css": "/Zofia_Szyposzynska_Web_Wroclaw/static/css/main.d42aaca0.css",
+    "main.js": "/Zofia_Szyposzynska_Web_Wroclaw/static/js/main.2613fac0.js",
+    "index.html": "/Zofia_Szyposzynska_Web_Wroclaw/index.html",
+    "main.d42aaca0.css.map": "/Zofia_Szyposzynska_Web_Wroclaw/static/css/main.d42aaca0.css.map",
+    "main.2613fac0.js.map": "/Zofia_Szyposzynska_Web_Wroclaw/static/js/main.2613fac0.js.map"
   },
   "entrypoints": [
     "static/css/main.d42aaca0.css",
