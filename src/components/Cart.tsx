@@ -59,9 +59,8 @@ const Cart = () => {
                       </button>
                     </div>
 
-                    {/* Przycisk do usunięcia */}
                     <button
-                      className="btn btn-danger btn-sm ms-3" // Dodano ms-3 (margin start) aby zmniejszyć gap
+                      className="btn btn-danger btn-sm ms-3" 
                       onClick={() => removeFromCart(product.id)}
                     >
                       Usuń
@@ -73,7 +72,7 @@ const Cart = () => {
               <div className="d-flex justify-content-between align-items-center mt-3">
                 <p className="fw-bold mt-2">Całkowita cena: {totalPrice} zł</p>
 
-                {/* Przyciski do czyszczenia koszyka i przejścia do podsumowania */}
+               
                 <div className="d-flex">
                   <button
                     className="btn btn-warning me-2"
@@ -86,7 +85,8 @@ const Cart = () => {
                     onClick={() => {
                       localStorage.setItem('order', JSON.stringify(cart));
                       localStorage.setItem('orderTotal', totalPrice);
-                      window.location.href = 'order-summary.html';
+                      window.location.href = process.env.PUBLIC_URL + '/order-summary.html';
+
                     }}
                   >
                     Przejdź do podsumowania
